@@ -25,6 +25,5 @@ namespace Xunit
                 i++;
             } while (true);
         }
-
     }
 }

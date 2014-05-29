@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using Xunit.Sdk;
-
 namespace Xunit
 {
     public class RetryAttribute : FactAttribute

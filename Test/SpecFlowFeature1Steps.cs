@@ -1,7 +1,6 @@
 ﻿using System;
 using TechTalk.SpecFlow;
 using Xunit;
-
 namespace XUnitTestProject1
 {
     [Binding]
@@ -11,7 +10,6 @@ namespace XUnitTestProject1
         [When]
         public void WhenITrySomething()
         {
-            //ScenarioContext.Current.Pending();
             tentou++;
             Console.WriteLine("Tentou " + tentou);
             Assert.True(tentou >= 5);
