@@ -72,7 +72,7 @@ namespace XUnitTestProject1
             this.ScenarioTearDown();
         }
         
-        [XUnitTestProject1.Retry(5)]
+        [Xunit.Retry(5)]
         [Xunit.TraitAttribute("FeatureTitle", "SpecFlowFeature1")]
         [Xunit.TraitAttribute("Description", "Try do do something a few times")]
         public virtual void TryDoDoSomethingAFewTimes()

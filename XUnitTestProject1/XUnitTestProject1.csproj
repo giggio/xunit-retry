@@ -71,6 +71,12 @@
       <LastGenOutput>SpecFlowFeature1.feature.cs</LastGenOutput>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\XUnitRetry\XUnitRetry.csproj">
+      <Project>{b9e993ad-3586-49f5-906b-8015251cfe27}</Project>
+      <Name>XUnitRetry</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

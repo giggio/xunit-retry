@@ -35,7 +35,7 @@ namespace CustomXUnit.Generator.SpecflowPlugin
         }
         public override void SetTestMethod(TestClassGenerationContext generationContext, CodeMemberMethod testMethod, string scenarioTitle)
         {
-            CodeDomHelper.AddAttribute(testMethod, "XUnitTestProject1.Retry", new CodeAttributeArgument(new CodePrimitiveExpression(5)));
+            CodeDomHelper.AddAttribute(testMethod, "Xunit.Retry", new CodeAttributeArgument(new CodePrimitiveExpression(5)));
             SetProperty(testMethod, FEATURE_TITLE_PROPERTY_NAME, generationContext.Feature.Title);
             SetDescription(testMethod, scenarioTitle);
         }
