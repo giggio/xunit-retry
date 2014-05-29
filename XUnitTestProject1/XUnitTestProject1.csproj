@@ -62,18 +62,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
     <None Include="SpecFlowFeature1.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>SpecFlowFeature1.feature.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\CustomXUnit.Generator.SpecflowPlugin\CustomXUnit.Generator.SpecflowPlugin.csproj">
-      <Project>{ab750360-5e09-48b5-850b-aeb6a03d8034}</Project>
-      <Name>CustomXUnit.Generator.SpecflowPlugin</Name>
-    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
