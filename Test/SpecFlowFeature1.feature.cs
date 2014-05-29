@@ -11,7 +11,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace XUnitTestProject1
+namespace Test
 {
     using TechTalk.SpecFlow;
     

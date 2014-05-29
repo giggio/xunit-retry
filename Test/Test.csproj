@@ -6,8 +6,8 @@
     <ProjectGuid>{F05A81FA-5E11-4334-B502-2E0370B0645E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>XUnitTestProject1</RootNamespace>
-    <AssemblyName>XUnitTestProject1</AssemblyName>
+    <RootNamespace>Test</RootNamespace>
+    <AssemblyName>Test</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -72,9 +72,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\XUnitRetry\XUnitRetry.csproj">
+    <ProjectReference Include="..\XunitRetry\XunitRetry.csproj">
       <Project>{b9e993ad-3586-49f5-906b-8015251cfe27}</Project>
-      <Name>XUnitRetry</Name>
+      <Name>XunitRetry</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

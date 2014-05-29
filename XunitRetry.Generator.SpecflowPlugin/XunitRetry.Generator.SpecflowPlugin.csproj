@@ -7,8 +7,8 @@
     <ProjectGuid>{AB750360-5E09-48B5-850B-AEB6A03D8034}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CustomXUnit.Generator.SpecflowPlugin</RootNamespace>
-    <AssemblyName>CustomXUnit.Generator.SpecflowPlugin</AssemblyName>
+    <RootNamespace>XunitRetry.Generator.SpecflowPlugin</RootNamespace>
+    <AssemblyName>XunitRetry.Generator.SpecflowPlugin</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -52,17 +52,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SpecflowPlugin.cs" />
-    <Compile Include="XUnitCustomTestGeneratorProvider.cs" />
+    <Compile Include="XunitCustomTestGeneratorProvider.cs" />
+    <Compile Include="XunitRetry.Generator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\XUnitRetry\XUnitRetry.csproj">
+    <ProjectReference Include="..\XunitRetry\XunitRetry.csproj">
       <Project>{b9e993ad-3586-49f5-906b-8015251cfe27}</Project>
-      <Name>XUnitRetry</Name>
+      <Name>XunitRetry</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

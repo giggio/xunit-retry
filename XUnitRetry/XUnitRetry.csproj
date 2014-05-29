@@ -7,8 +7,8 @@
     <ProjectGuid>{B9E993AD-3586-49F5-906B-8015251CFE27}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>XUnitRetry</RootNamespace>
-    <AssemblyName>XUnitRetry</AssemblyName>
+    <RootNamespace>Xunit</RootNamespace>
+    <AssemblyName>XunitRetry</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
