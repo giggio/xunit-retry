@@ -1,36 +1,32 @@
 ﻿using TechTalk.SpecFlow.Infrastructure;
+using System.CodeDom;
+using BoDi;
+using TechTalk.SpecFlow.Generator;
+using TechTalk.SpecFlow.Generator.Configuration;
+using TechTalk.SpecFlow.Generator.Plugins;
+using TechTalk.SpecFlow.Generator.UnitTestProvider;
+using TechTalk.SpecFlow.Utils;
 
-[assembly: GeneratorPlugin(typeof(CustomXUnit.Generator.SpecflowPlugin.CodedUIGeneratorPlugin))]
+[assembly: GeneratorPlugin(typeof(XunitRetry.Generator.SpecflowPlugin.XunitRetryGeneratorPlugin))]
 
-namespace CustomXUnit.Generator.SpecflowPlugin
+namespace XunitRetry.Generator.SpecflowPlugin
 {
-    using System.CodeDom;
-
-    using BoDi;
-
-    using TechTalk.SpecFlow.Generator;
-    using TechTalk.SpecFlow.Generator.Configuration;
-    using TechTalk.SpecFlow.Generator.Plugins;
-    using TechTalk.SpecFlow.Generator.UnitTestProvider;
-    using TechTalk.SpecFlow.UnitTestProvider;
-    using TechTalk.SpecFlow.Utils;
-
-    public class CodedUIGeneratorPlugin : IGeneratorPlugin
+    public class XunitRetryGeneratorPlugin : IGeneratorPlugin
     {
-        public void RegisterDependencies(ObjectContainer container) { }
+        public void RegisterDependencies(ObjectContainer container) { }
 
         public void RegisterCustomizations(ObjectContainer container, SpecFlowProjectConfiguration generatorConfiguration)
         {
-            container.RegisterTypeAs<XUnitCustomCustomTestGeneratorProvider, IUnitTestGeneratorProvider>();
+            container.RegisterTypeAs<XunitRetryTestGeneratorProvider, IUnitTestGeneratorProvider>();
         }
 
         public void RegisterConfigurationDefaults(SpecFlowProjectConfiguration specFlowConfiguration)
         {
         }
     }
-    public class XUnitCustomCustomTestGeneratorProvider : XUnitCustomTestGeneratorProvider
+    public class XunitRetryTestGeneratorProvider : XunitRetry.Generator.SpecflowPlugin.XUnitTestGeneratorProvider, IUnitTestGeneratorProvider
     {
-        public XUnitCustomCustomTestGeneratorProvider(CodeDomHelper codeDomHelper) : base(codeDomHelper)
+        public XunitRetryTestGeneratorProvider(CodeDomHelper codeDomHelper) : base(codeDomHelper)
         {
         }
         public override void SetTestMethod(TestClassGenerationContext generationContext, CodeMemberMethod testMethod, string scenarioTitle)

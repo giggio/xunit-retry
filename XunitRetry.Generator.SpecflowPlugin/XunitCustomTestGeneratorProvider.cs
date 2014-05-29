@@ -6,9 +6,9 @@ using TechTalk.SpecFlow.Generator;
 using TechTalk.SpecFlow.Generator.UnitTestProvider;
 using TechTalk.SpecFlow.Utils;
 
-namespace CustomXUnit.Generator.SpecflowPlugin
+namespace XunitRetry.Generator.SpecflowPlugin
 {
-    public class XUnitCustomTestGeneratorProvider : IUnitTestGeneratorProvider
+    public class XUnitTestGeneratorProvider : IUnitTestGeneratorProvider
     {
         protected const string FEATURE_TITLE_PROPERTY_NAME = "FeatureTitle";
         protected const string DESCRIPTION_PROPERTY_NAME = "Description";
@@ -27,7 +27,7 @@ namespace CustomXUnit.Generator.SpecflowPlugin
         public bool SupportsRowTests { get { return true; } }
         public bool SupportsAsyncTests { get { return false; } }
 
-        public XUnitCustomTestGeneratorProvider(CodeDomHelper codeDomHelper)
+        public XUnitTestGeneratorProvider(CodeDomHelper codeDomHelper)
         {
             CodeDomHelper = codeDomHelper;
         }
@@ -53,7 +53,7 @@ namespace CustomXUnit.Generator.SpecflowPlugin
 
             var fixtureDataType =
                 CodeDomHelper.CreateNestedTypeReference(generationContext.TestClass, _currentFixtureDataTypeDeclaration.Name);
-            
+
             var useFixtureType = new CodeTypeReference(IUSEFIXTURE_INTERFACE, fixtureDataType);
             CodeDomHelper.SetTypeReferenceAsInterface(useFixtureType);
 
