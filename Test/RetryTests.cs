@@ -5,24 +5,29 @@ namespace XUnitTestProject1
 {
     public class UnitTest1
     {
-        [Fact]
-        public void TestMethod1()
+        public UnitTest1()
         {
-            Assert.Equal(1, 2 - 1);
+            tryTimes = 0;
         }
         [Fact]
-        public void TestMethod3()
+        public void ARegularTestMethodStillWorks()
         {
             Assert.True(true);
-            Console.WriteLine("Hello there");
         }
-        static int tentou = 0;
+        static int tryTimes = 0;
         [Retry(5)]
-        public void TentaAlgumasVezes()
+        public void Try5Times()
         {
-            tentou++;
-            Console.WriteLine("Tentou " + tentou);
-            Assert.True(tentou >= 5);
+            tryTimes++;
+            Console.WriteLine("Tried " + tryTimes);
+            Assert.True(tryTimes == 5);
+        }
+        [Retry]
+        public void TryDefaultTimes()
+        {
+            tryTimes++;
+            Console.WriteLine("Tried " + tryTimes);
+            Assert.True(tryTimes == 3);
         }
     }
 }

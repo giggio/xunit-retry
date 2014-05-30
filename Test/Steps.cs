@@ -6,20 +6,20 @@ namespace XUnitTestProject1
     [Binding]
     public class SpecFlowFeature1Steps
     {
-        static int tentou = 0;
+        static int tryTimes = 0;
         [When]
         public void WhenITrySomething()
         {
-            tentou++;
-            Console.WriteLine("Tentou " + tentou);
-            Assert.True(tentou >= 5);
+            tryTimes++;
+            Console.WriteLine("Tried " + tryTimes);
+            Assert.True(tryTimes == 5);
         }
         [When]
         public void WhenITrySomething_P0_times(int n)
         {
-            tentou++;
-            Console.WriteLine("Tentou " + tentou);
-            Assert.True(tentou >= n);
+            tryTimes++;
+            Console.WriteLine("Tried " + tryTimes);
+            Assert.True(tryTimes == n);
         }
         [When]
         public void WhenIDoSomething()
@@ -29,7 +29,7 @@ namespace XUnitTestProject1
         [AfterScenario]
         public void AfterScenario()
         {
-            tentou = 0;
+            tryTimes = 0;
         }
     }
 }

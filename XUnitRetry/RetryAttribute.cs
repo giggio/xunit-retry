@@ -6,7 +6,7 @@ namespace Xunit
     {
         readonly int times;
 
-        public RetryAttribute(int times)
+        public RetryAttribute(int times = 3)
         {
             this.times = times;
         }
