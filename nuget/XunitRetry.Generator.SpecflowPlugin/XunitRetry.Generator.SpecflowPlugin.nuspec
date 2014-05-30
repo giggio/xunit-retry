@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <metadata>
         <id>XunitRetry.Generator.SpecflowPlugin</id>
-        <version>1.0.0.1</version>
+        <version>1.0.1</version>
         <title>SpecFlow Xunit Retry Generator Plugin</title>
         <authors>giggio</authors>
         <owners>giggio</owners>
@@ -14,7 +14,7 @@
         <language>en-US</language>
         <tags>specflow xunit</tags>
         <dependencies>
-            <dependency id="XunitRetry" version="1.0.0" />
+            <dependency id="XunitRetry" version="1.0.1" />
             <dependency id="SpecFlow" version="1.9.0" />
         </dependencies>
     </metadata>
