@@ -1,5 +1,5 @@
 ﻿@featuretag
-Feature: SpecFlowFeature1
+Feature: A feature without retries
 
 @scenariotag
 @retry(7)

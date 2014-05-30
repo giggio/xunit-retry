@@ -18,15 +18,15 @@ namespace Test
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "1.9.0.77")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public partial class SpecFlowFeature1Feature : Xunit.IUseFixture<SpecFlowFeature1Feature.FixtureData>, System.IDisposable
+    public partial class AFeatureWithoutRetriesFeature : Xunit.IUseFixture<AFeatureWithoutRetriesFeature.FixtureData>, System.IDisposable
     {
         
         private static TechTalk.SpecFlow.ITestRunner testRunner;
         
-#line 1 "SpecFlowFeature1.feature"
+#line 1 "FeatureWithoutRetry.feature"
 #line hidden
         
-        public SpecFlowFeature1Feature()
+        public AFeatureWithoutRetriesFeature()
         {
             this.TestInitialize();
         }
@@ -34,7 +34,7 @@ namespace Test
         public static void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "SpecFlowFeature1", "", ProgrammingLanguage.CSharp, new string[] {
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "A feature without retries", "", ProgrammingLanguage.CSharp, new string[] {
                         "featuretag"});
             testRunner.OnFeatureStart(featureInfo);
         }
@@ -64,7 +64,7 @@ namespace Test
             testRunner.CollectScenarioErrors();
         }
         
-        public virtual void SetFixture(SpecFlowFeature1Feature.FixtureData fixtureData)
+        public virtual void SetFixture(AFeatureWithoutRetriesFeature.FixtureData fixtureData)
         {
         }
         
@@ -73,7 +73,7 @@ namespace Test
             this.ScenarioTearDown();
         }
         
-        [Xunit.TraitAttribute("FeatureTitle", "SpecFlowFeature1")]
+        [Xunit.TraitAttribute("FeatureTitle", "A feature without retries")]
         [Xunit.TraitAttribute("Description", "Try do something a few times")]
         [Xunit.RetryAttribute(7)]
         public virtual void TryDoSomethingAFewTimes()
@@ -89,9 +89,9 @@ this.ScenarioSetup(scenarioInfo);
             this.ScenarioCleanup();
         }
         
-        [Xunit.FactAttribute()]
-        [Xunit.TraitAttribute("FeatureTitle", "SpecFlowFeature1")]
+        [Xunit.TraitAttribute("FeatureTitle", "A feature without retries")]
         [Xunit.TraitAttribute("Description", "This will try only once")]
+        [Xunit.FactAttribute()]
         public virtual void ThisWillTryOnlyOnce()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("This will try only once", ((string[])(null)));
@@ -110,12 +110,12 @@ this.ScenarioSetup(scenarioInfo);
             
             public FixtureData()
             {
-                SpecFlowFeature1Feature.FeatureSetup();
+                AFeatureWithoutRetriesFeature.FeatureSetup();
             }
             
             void System.IDisposable.Dispose()
             {
-                SpecFlowFeature1Feature.FeatureTearDown();
+                AFeatureWithoutRetriesFeature.FeatureTearDown();
             }
         }
     }

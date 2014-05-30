@@ -52,10 +52,15 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
-    <Compile Include="SpecFlowFeature1.feature.cs">
+    <Compile Include="FeatureWithoutRetry.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>SpecFlowFeature1.feature</DependentUpon>
+      <DependentUpon>FeatureWithoutRetry.feature</DependentUpon>
+    </Compile>
+    <Compile Include="FeatureWithRetry.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FeatureWithRetry.feature</DependentUpon>
     </Compile>
     <Compile Include="SpecFlowFeature1Steps.cs" />
     <Compile Include="UnitTest1.cs" />
@@ -65,10 +70,14 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="packages.config" />
-    <None Include="SpecFlowFeature1.feature">
+    <None Include="FeatureWithRetry.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>SpecFlowFeature1.feature.cs</LastGenOutput>
+      <LastGenOutput>FeatureWithRetry.feature.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+    <None Include="FeatureWithoutRetry.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>FeatureWithoutRetry.feature.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>
