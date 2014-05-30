@@ -173,3 +173,5 @@ node_modules/
 *.webtestresult
 
 *.vim
+
+*.nupkg

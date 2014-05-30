@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <id>XunitRetry.Generator.SpecflowPlugin</id>
+        <version>1.0.0.0</version>
+        <title>SpecFlow Xunit Retry Generator Plugin</title>
+        <authors>giggio</authors>
+        <owners>giggio</owners>
+        <licenseUrl>https://raw.githubusercontent.com/giggio/xunit-retry/master/LICENSE.txt</licenseUrl>
+        <projectUrl>https://github.com/giggio/xunit-retry</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>A SpecFlow plugin that allows a spec to retry a number of times if it fails.</description>
+        <summary>A SpecFlow plugin that allows a spec to retry a number of times if it fails.</summary>
+        <language>en-US</language>
+        <tags>specflow xunit</tags>
+        <dependencies>
+            <dependency id="XunitRetry" version="1.0.0" />
+            <dependency id="SpecFlow" version="1.9.0" />
+        </dependencies>
+    </metadata>
+    <files>
+        <file src="App.config.install.xdt" target="content\App.config.install.xdt" />
+        <file src="App.config.uninstall.xdt" target="content\App.config.uninstall.xdt" />
+        <file src="..\..\XunitRetry.Generator.SpecflowPlugin\bin\Release\XunitRetry.Generator.SpecflowPlugin.dll" target="tools\XunitRetry.Generator.SpecflowPlugin.dll" />
+    </files>
+</package>
