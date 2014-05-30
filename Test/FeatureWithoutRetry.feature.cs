@@ -90,14 +90,29 @@ this.ScenarioSetup(scenarioInfo);
         }
         
         [Xunit.TraitAttribute("FeatureTitle", "A feature without retries")]
+        [Xunit.TraitAttribute("Description", "Try do something with default times")]
+        [Xunit.RetryAttribute(3)]
+        public virtual void TryDoSomethingWithDefaultTimes()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Try do something with default times", new string[] {
+                        "retry"});
+#line 10
+this.ScenarioSetup(scenarioInfo);
+#line 11
+ testRunner.When("I try something 3 times", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.TraitAttribute("FeatureTitle", "A feature without retries")]
         [Xunit.TraitAttribute("Description", "This will try only once")]
         [Xunit.FactAttribute()]
         public virtual void ThisWillTryOnlyOnce()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("This will try only once", ((string[])(null)));
-#line 9
+#line 13
 this.ScenarioSetup(scenarioInfo);
-#line 10
+#line 14
  testRunner.When("I do something", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             this.ScenarioCleanup();

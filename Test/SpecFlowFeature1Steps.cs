@@ -15,9 +15,21 @@ namespace XUnitTestProject1
             Assert.True(tentou >= 5);
         }
         [When]
+        public void WhenITrySomething_P0_times(int n)
+        {
+            tentou++;
+            Console.WriteLine("Tentou " + tentou);
+            Assert.True(tentou >= n);
+        }
+        [When]
         public void WhenIDoSomething()
         {
             Assert.True(true);
+        }
+        [AfterScenario]
+        public void AfterScenario()
+        {
+            tentou = 0;
         }
     }
 }

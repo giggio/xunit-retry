@@ -43,12 +43,17 @@ namespace XunitRetry.Generator.SpecflowPlugin
         }
         private int GetRetryCount(IEnumerable<string> tags)
         {
-            var retryCat = tags.SingleOrDefault(c => c.StartsWith("retry(", StringComparison.InvariantCultureIgnoreCase));
+            var retryCat = (from t in tags.Select(t => Regex.Match(t, @"^(retry)(\((\d+)\))?$", RegexOptions.IgnoreCase))
+                            where t.Success
+                            select t).FirstOrDefault();
             int count = 1;
             if (retryCat != null)
             {
-                var countValue = Regex.Match(retryCat, @"^retry\((\d+)\)$", RegexOptions.IgnoreCase).Groups[1].Value;
-                count = Convert.ToInt32(countValue);
+                var countValue = retryCat.Groups[3].Value;
+                if (string.IsNullOrWhiteSpace(countValue))
+                    count = 3;
+                else
+                    count = Convert.ToInt32(countValue);
             }
             return count;
         }
