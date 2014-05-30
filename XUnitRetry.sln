@@ -9,6 +9,24 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XunitRetry.Generator.Specfl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{F05A81FA-5E11-4334-B502-2E0370B0645E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nuget files", "nuget files", "{23D82392-3F4C-4D8C-83A4-07F76C8D422D}"
+	ProjectSection(SolutionItems) = preProject
+		nuget\build.cmd = nuget\build.cmd
+		nuget\publish.cmd = nuget\publish.cmd
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "XunitRetry", "XunitRetry", "{E3B40A99-2097-404B-9C5B-A2133EFCA7E0}"
+	ProjectSection(SolutionItems) = preProject
+		nuget\XunitRetry\XunitRetry.nuspec = nuget\XunitRetry\XunitRetry.nuspec
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "XunitRetry.Generator.SpecflowPlugin", "XunitRetry.Generator.SpecflowPlugin", "{7F0689EF-2665-416A-BE5E-A7A2E7253F26}"
+	ProjectSection(SolutionItems) = preProject
+		nuget\XunitRetry.Generator.SpecflowPlugin\App.config.install.xdt = nuget\XunitRetry.Generator.SpecflowPlugin\App.config.install.xdt
+		nuget\XunitRetry.Generator.SpecflowPlugin\App.config.uninstall.xdt = nuget\XunitRetry.Generator.SpecflowPlugin\App.config.uninstall.xdt
+		nuget\XunitRetry.Generator.SpecflowPlugin\XunitRetry.Generator.SpecflowPlugin.nuspec = nuget\XunitRetry.Generator.SpecflowPlugin\XunitRetry.Generator.SpecflowPlugin.nuspec
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +48,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E3B40A99-2097-404B-9C5B-A2133EFCA7E0} = {23D82392-3F4C-4D8C-83A4-07F76C8D422D}
+		{7F0689EF-2665-416A-BE5E-A7A2E7253F26} = {23D82392-3F4C-4D8C-83A4-07F76C8D422D}
 	EndGlobalSection
 EndGlobal
