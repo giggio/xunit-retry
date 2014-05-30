@@ -14,5 +14,10 @@ namespace XUnitTestProject1
             Console.WriteLine("Tentou " + tentou);
             Assert.True(tentou >= 5);
         }
+        [When]
+        public void WhenIDoSomething()
+        {
+            Assert.True(true);
+        }
     }
 }

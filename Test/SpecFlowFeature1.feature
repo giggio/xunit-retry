@@ -1,5 +1,10 @@
-﻿Feature: SpecFlowFeature1
+﻿@featuretag
+Feature: SpecFlowFeature1
 
-@mytag
-Scenario: Try do do something a few times
+@scenariotag
+@retry(7)
+Scenario: Try do something a few times
 	When I try something
+
+Scenario: This will try only once
+	When I do something

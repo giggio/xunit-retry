@@ -34,7 +34,8 @@ namespace Test
         public static void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "SpecFlowFeature1", "", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "SpecFlowFeature1", "", ProgrammingLanguage.CSharp, new string[] {
+                        "featuretag"});
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -72,17 +73,32 @@ namespace Test
             this.ScenarioTearDown();
         }
         
-        [Xunit.Retry(5)]
         [Xunit.TraitAttribute("FeatureTitle", "SpecFlowFeature1")]
-        [Xunit.TraitAttribute("Description", "Try do do something a few times")]
-        public virtual void TryDoDoSomethingAFewTimes()
+        [Xunit.TraitAttribute("Description", "Try do something a few times")]
+        [Xunit.RetryAttribute(7)]
+        public virtual void TryDoSomethingAFewTimes()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Try do do something a few times", new string[] {
-                        "mytag"});
-#line 4
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Try do something a few times", new string[] {
+                        "scenariotag",
+                        "retry(7)"});
+#line 6
 this.ScenarioSetup(scenarioInfo);
-#line 5
+#line 7
  testRunner.When("I try something", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.FactAttribute()]
+        [Xunit.TraitAttribute("FeatureTitle", "SpecFlowFeature1")]
+        [Xunit.TraitAttribute("Description", "This will try only once")]
+        public virtual void ThisWillTryOnlyOnce()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("This will try only once", ((string[])(null)));
+#line 9
+this.ScenarioSetup(scenarioInfo);
+#line 10
+ testRunner.When("I do something", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             this.ScenarioCleanup();
         }
