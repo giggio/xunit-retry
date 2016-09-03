@@ -15,14 +15,14 @@ namespace XUnitTestProject1
             Assert.True(true);
         }
         static int tryTimes = 0;
-        [Retry(5)]
+        [RetryFact(5)]
         public void Try5Times()
         {
             tryTimes++;
             Console.WriteLine("Tried " + tryTimes);
             Assert.True(tryTimes == 5);
         }
-        [Retry]
+        [RetryFact]
         public void TryDefaultTimes()
         {
             tryTimes++;
