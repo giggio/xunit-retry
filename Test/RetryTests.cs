@@ -20,14 +20,14 @@ namespace XUnitTestProject1
         {
             tryTimes++;
             Console.WriteLine("Tried " + tryTimes);
-            Assert.True(tryTimes == 5);
+            Assert.Equal(5, tryTimes);
         }
         [RetryFact]
         public void TryDefaultTimes()
         {
             tryTimes++;
             Console.WriteLine("Tried " + tryTimes);
-            Assert.True(tryTimes == 3);
+            Assert.Equal(3, tryTimes);
         }
     }
 }

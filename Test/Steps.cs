@@ -12,14 +12,14 @@ namespace XUnitTestProject1
         {
             tryTimes++;
             Console.WriteLine("Tried " + tryTimes);
-            Assert.True(tryTimes == 5);
+            Assert.Equal(5, tryTimes);
         }
         [When]
         public void WhenITrySomething_P0_times(int n)
         {
             tryTimes++;
             Console.WriteLine("Tried " + tryTimes);
-            Assert.True(tryTimes == n);
+            Assert.Equal(n, tryTimes);
         }
         [When]
         public void WhenIDoSomething()
