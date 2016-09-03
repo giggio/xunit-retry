@@ -20,7 +20,7 @@ namespace XunitRetry.Generator.SpecflowPlugin
         }
         public override void SetTestMethod(TestClassGenerationContext generationContext, CodeMemberMethod testMethod, string scenarioTitle)
         {
-            SetProperty(testMethod, FEATURE_TITLE_PROPERTY_NAME, generationContext.Feature.Title);
+            SetProperty(testMethod, FEATURE_TITLE_PROPERTY_NAME, generationContext.Feature.Name);
             SetDescription(testMethod, scenarioTitle);
 
             var count = !generationContext.CustomData.ContainsKey("featureRetryCount") ? 1 : Convert.ToInt32(generationContext.CustomData["featureRetryCount"]);

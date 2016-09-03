@@ -11,42 +11,49 @@ namespace XunitRetry.Generator.SpecflowPlugin
     public class XUnitTestGeneratorProvider : IUnitTestGeneratorProvider
     {
         protected const string FEATURE_TITLE_PROPERTY_NAME = "FeatureTitle";
-        protected const string DESCRIPTION_PROPERTY_NAME = "Description";
+        private const string DESCRIPTION_PROPERTY_NAME = "Description";
         protected const string FACT_ATTRIBUTE = "Xunit.FactAttribute";
-        protected const string FACT_ATTRIBUTE_SKIP_PROPERTY_NAME = "Skip";
-        protected const string THEORY_ATTRIBUTE = "Xunit.Extensions.TheoryAttribute";
-        protected const string INLINEDATA_ATTRIBUTE = "Xunit.Extensions.InlineDataAttribute";
-        protected const string SKIP_REASON = "Ignored";
-        protected const string TRAIT_ATTRIBUTE = "Xunit.TraitAttribute";
-        protected const string IUSEFIXTURE_INTERFACE = "Xunit.IUseFixture";
+        private const string FACT_ATTRIBUTE_SKIP_PROPERTY_NAME = "Skip";
+        internal const string THEORY_ATTRIBUTE = "Xunit.Extensions.TheoryAttribute";
+        internal const string THEORY_ATTRIBUTE_SKIP_PROPERTY_NAME = "Skip";
+        private const string INLINEDATA_ATTRIBUTE = "Xunit.Extensions.InlineDataAttribute";
+        internal const string SKIP_REASON = "Ignored";
+        private const string TRAIT_ATTRIBUTE = "Xunit.TraitAttribute";
+        private const string IUSEFIXTURE_INTERFACE = "Xunit.IUseFixture";
+        private const string CATEGORY_PROPERTY_NAME = "Category";
 
         private CodeTypeDeclaration _currentFixtureDataTypeDeclaration = null;
 
         protected CodeDomHelper CodeDomHelper { get; set; }
 
-        public bool SupportsRowTests { get { return true; } }
-        public bool SupportsAsyncTests { get { return false; } }
+        public virtual UnitTestGeneratorTraits GetTraits()
+        {
+            return UnitTestGeneratorTraits.RowTests;
+        }
 
         public XUnitTestGeneratorProvider(CodeDomHelper codeDomHelper)
         {
             CodeDomHelper = codeDomHelper;
         }
 
-        public virtual void SetTestClass(TestClassGenerationContext generationContext, string featureTitle, string featureDescription)
+        public void SetTestClass(TestClassGenerationContext generationContext, string featureTitle, string featureDescription)
         {
             // xUnit does not use an attribute for the TestFixture, all public classes are potential fixtures
         }
 
         public virtual void SetTestClassCategories(TestClassGenerationContext generationContext, IEnumerable<string> featureCategories)
         {
-            // xUnit does not support caregories
+            // Set Category trait which can be used with the /trait or /-trait xunit flags to include/exclude tests
+            foreach (string str in featureCategories)
+                SetProperty(generationContext.TestClass, CATEGORY_PROPERTY_NAME, str);
         }
 
-        public virtual void SetTestClassInitializeMethod(TestClassGenerationContext generationContext)
+        public void SetTestClassInitializeMethod(TestClassGenerationContext generationContext)
         {
             // xUnit uses IUseFixture<T> on the class
 
             generationContext.TestClassInitializeMethod.Attributes |= MemberAttributes.Static;
+            generationContext.TestRunnerField.Attributes |= MemberAttributes.Static;
 
             _currentFixtureDataTypeDeclaration = CodeDomHelper.CreateGeneratedTypeDeclaration("FixtureData");
             generationContext.TestClass.Members.Add(_currentFixtureDataTypeDeclaration);
@@ -54,7 +61,8 @@ namespace XunitRetry.Generator.SpecflowPlugin
             var fixtureDataType =
                 CodeDomHelper.CreateNestedTypeReference(generationContext.TestClass, _currentFixtureDataTypeDeclaration.Name);
 
-            var useFixtureType = new CodeTypeReference(IUSEFIXTURE_INTERFACE, fixtureDataType);
+            var useFixtureType = CreateFixtureInterface(fixtureDataType);
+
             CodeDomHelper.SetTypeReferenceAsInterface(useFixtureType);
 
             generationContext.TestClass.BaseTypes.Add(useFixtureType);
@@ -78,7 +86,7 @@ namespace XunitRetry.Generator.SpecflowPlugin
                     generationContext.TestClassInitializeMethod.Name));
         }
 
-        public virtual void SetTestClassCleanupMethod(TestClassGenerationContext generationContext)
+        public void SetTestClassCleanupMethod(TestClassGenerationContext generationContext)
         {
             // xUnit uses IUseFixture<T> on the class
 
@@ -99,19 +107,19 @@ namespace XunitRetry.Generator.SpecflowPlugin
                     generationContext.TestClassCleanupMethod.Name));
         }
 
-        public virtual void SetTestMethod(TestClassGenerationContext generationContext, CodeMemberMethod testMethod, string scenarioTitle)
+        public virtual void SetTestMethod(TestClassGenerationContext generationContext, CodeMemberMethod testMethod, string friendlyTestName)
         {
-            CodeDomHelper.AddAttribute(testMethod, FACT_ATTRIBUTE);
+            CodeDomHelper.AddAttribute(testMethod, FACT_ATTRIBUTE, new CodeAttributeArgument("DisplayName", new CodePrimitiveExpression(friendlyTestName)));
 
-            SetProperty(testMethod, FEATURE_TITLE_PROPERTY_NAME, generationContext.Feature.Title);
-            SetDescription(testMethod, scenarioTitle);
+            SetProperty(testMethod, FEATURE_TITLE_PROPERTY_NAME, generationContext.Feature.Name);
+            SetDescription(testMethod, friendlyTestName);
         }
 
         public virtual void SetRowTest(TestClassGenerationContext generationContext, CodeMemberMethod testMethod, string scenarioTitle)
         {
             CodeDomHelper.AddAttribute(testMethod, THEORY_ATTRIBUTE);
 
-            SetProperty(testMethod, FEATURE_TITLE_PROPERTY_NAME, generationContext.Feature.Title);
+            SetProperty(testMethod, FEATURE_TITLE_PROPERTY_NAME, generationContext.Feature.Name);
             SetDescription(testMethod, scenarioTitle);
         }
 
@@ -133,10 +141,11 @@ namespace XunitRetry.Generator.SpecflowPlugin
 
         public virtual void SetTestMethodCategories(TestClassGenerationContext generationContext, CodeMemberMethod testMethod, IEnumerable<string> scenarioCategories)
         {
-            // xUnit does not support caregories
+            foreach (string str in scenarioCategories)
+                SetProperty((CodeTypeMember)testMethod, "Category", str);
         }
 
-        public virtual void SetTestInitializeMethod(TestClassGenerationContext generationContext)
+        public void SetTestInitializeMethod(TestClassGenerationContext generationContext)
         {
             // xUnit uses a parameterless constructor
 
@@ -152,7 +161,7 @@ namespace XunitRetry.Generator.SpecflowPlugin
                     generationContext.TestInitializeMethod.Name));
         }
 
-        public virtual void SetTestCleanupMethod(TestClassGenerationContext generationContext)
+        public void SetTestCleanupMethod(TestClassGenerationContext generationContext)
         {
             // xUnit supports test tear down through the IDisposable interface
 
@@ -171,7 +180,7 @@ namespace XunitRetry.Generator.SpecflowPlugin
                     generationContext.TestCleanupMethod.Name));
         }
 
-        public virtual void SetTestClassIgnore(TestClassGenerationContext generationContext)
+        public void SetTestClassIgnore(TestClassGenerationContext generationContext)
         {
             //TODO: how to do class level ignore?
         }
@@ -189,6 +198,18 @@ namespace XunitRetry.Generator.SpecflowPlugin
                         new CodeAttributeArgument(FACT_ATTRIBUTE_SKIP_PROPERTY_NAME, new CodePrimitiveExpression(SKIP_REASON))
                     );
             }
+
+            var theoryAttr = testMethod.CustomAttributes.OfType<CodeAttributeDeclaration>()
+                .FirstOrDefault(codeAttributeDeclaration => codeAttributeDeclaration.Name == THEORY_ATTRIBUTE);
+
+            if (theoryAttr != null)
+            {
+                // set [TheoryAttribute(Skip="reason")]
+                theoryAttr.Arguments.Add
+                    (
+                        new CodeAttributeArgument(THEORY_ATTRIBUTE_SKIP_PROPERTY_NAME, new CodePrimitiveExpression(SKIP_REASON))
+                    );
+            }
         }
 
         protected void SetProperty(CodeTypeMember codeTypeMember, string name, string value)
@@ -202,13 +223,17 @@ namespace XunitRetry.Generator.SpecflowPlugin
             SetProperty(codeTypeMember, DESCRIPTION_PROPERTY_NAME, description);
         }
 
+        protected virtual CodeTypeReference CreateFixtureInterface(CodeTypeReference fixtureDataType)
+        {
+            return new CodeTypeReference(IUSEFIXTURE_INTERFACE, fixtureDataType);
+        }
 
         public virtual void FinalizeTestClass(TestClassGenerationContext generationContext)
         {
             // by default, doing nothing to the final generated code
         }
 
-        public virtual void SetTestMethodAsRow(TestClassGenerationContext generationContext, CodeMemberMethod testMethod, string scenarioTitle, string exampleSetName, string variantName, IEnumerable<KeyValuePair<string, string>> arguments)
+        public void SetTestMethodAsRow(TestClassGenerationContext generationContext, CodeMemberMethod testMethod, string scenarioTitle, string exampleSetName, string variantName, IEnumerable<KeyValuePair<string, string>> arguments)
         {
             // doing nothing since we support RowTest
         }
