@@ -13,6 +13,11 @@ namespace XUnitTestProject1
             tryTimes++;
             Console.WriteLine("Tried " + tryTimes);
             Assert.Equal(5, tryTimes);
+
+            // Reset the try counter only when the test passes
+            if (tryTimes == 5)
+                tryTimes = 0;
+            
         }
         [When]
         public void WhenITrySomething_P0_times(int n)
@@ -20,16 +25,17 @@ namespace XUnitTestProject1
             tryTimes++;
             Console.WriteLine("Tried " + tryTimes);
             Assert.Equal(n, tryTimes);
+
+            // Reset the try counter only when the test passes
+            if (tryTimes == n)
+                tryTimes = 0;
         }
+
         [When]
         public void WhenIDoSomething()
         {
             Assert.True(true);
         }
-        [AfterScenario]
-        public void AfterScenario()
-        {
-            tryTimes = 0;
-        }
+        
     }
 }

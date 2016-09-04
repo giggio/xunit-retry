@@ -22,6 +22,15 @@ namespace XunitRetry.Generator.SpecflowPlugin
 
         public void Initialize(GeneratorPluginEvents generatorPluginEvents, GeneratorPluginParameters generatorPluginParameters)
         {
+            generatorPluginEvents.CustomizeDependencies += GeneratorPluginEvents_CustomizeDependencies;
+     //       generatorPluginParameters.Parameters.
+            //generatorPluginEvents
+            //throw new NotImplementedException();
+        }
+
+        private void GeneratorPluginEvents_CustomizeDependencies(object sender, CustomizeDependenciesEventArgs e)
+        {
+            e.ObjectContainer.RegisterTypeAs<XunitRetryTestGeneratorProvider, IUnitTestGeneratorProvider>();
             //throw new NotImplementedException();
         }
     }

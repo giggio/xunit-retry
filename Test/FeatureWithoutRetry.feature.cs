@@ -73,11 +73,11 @@ namespace Test
             this.ScenarioTearDown();
         }
         
-        [Xunit.FactAttribute(DisplayName="Try do something a few times")]
         [Xunit.TraitAttribute("FeatureTitle", "A feature without retries")]
         [Xunit.TraitAttribute("Description", "Try do something a few times")]
         [Xunit.TraitAttribute("Category", "scenariotag")]
         [Xunit.TraitAttribute("Category", "retry(7)")]
+        [Xunit.RetryFactAttribute(7)]
         public virtual void TryDoSomethingAFewTimes()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Try do something a few times", new string[] {
@@ -91,10 +91,10 @@ this.ScenarioSetup(scenarioInfo);
             this.ScenarioCleanup();
         }
         
-        [Xunit.FactAttribute(DisplayName="Try do something with default times")]
         [Xunit.TraitAttribute("FeatureTitle", "A feature without retries")]
         [Xunit.TraitAttribute("Description", "Try do something with default times")]
         [Xunit.TraitAttribute("Category", "retry")]
+        [Xunit.RetryFactAttribute(3)]
         public virtual void TryDoSomethingWithDefaultTimes()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Try do something with default times", new string[] {
@@ -107,9 +107,9 @@ this.ScenarioSetup(scenarioInfo);
             this.ScenarioCleanup();
         }
         
-        [Xunit.FactAttribute(DisplayName="This will try only once")]
         [Xunit.TraitAttribute("FeatureTitle", "A feature without retries")]
         [Xunit.TraitAttribute("Description", "This will try only once")]
+        [Xunit.FactAttribute()]
         public virtual void ThisWillTryOnlyOnce()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("This will try only once", ((string[])(null)));

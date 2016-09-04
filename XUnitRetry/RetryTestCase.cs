@@ -39,7 +39,7 @@ namespace Xunit
                 // This is really the only tricky bit: we need to capture and delay messages (since those will
                 // contain run status) until we know we've decided to accept the final result;
                 var delayedMessageBus = new DelayedMessageBus(messageBus);
-
+                
                 var summary = await base.RunAsync(diagnosticMessageSink, delayedMessageBus, constructorArguments, aggregator, cancellationTokenSource);
                 if (aggregator.HasExceptions || summary.Failed == 0 || ++runCount >= maxRetries)
                 {

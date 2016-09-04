@@ -60,6 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Xunit2TestGeneratorProvider.cs" />
     <Compile Include="XunitTestGeneratorProvider.cs" />
     <Compile Include="XunitRetryGeneratorPlugin.cs" />
     <Compile Include="XunitRetryTestGeneratorProvider.cs" />

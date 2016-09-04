@@ -8,7 +8,7 @@ namespace Xunit
     /// </summary>
     [XunitTestCaseDiscoverer("Xunit.RetryFactDiscoverer", "XunitRetry")]
     public class RetryFactAttribute : FactAttribute
-    {
+    { 
         public RetryFactAttribute(int maxRetries = 3)
         {
             MaxRetries = maxRetries;
