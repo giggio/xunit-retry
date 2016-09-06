@@ -9,7 +9,7 @@ namespace XUnitTestProject1
 
         static int tryTimes = 0;
         
-        [RetryFact]
+        [Retry]
         public void ConstructorCalledForEachRetry()
         {
             tryTimes++;
@@ -32,7 +32,7 @@ namespace XUnitTestProject1
     {
         static int tryTimes = 0;
 
-        [RetryFact(MaxRetries = 5)]
+        [Retry(MaxRetries = 5)]
         public void Try5Times()
         {
             tryTimes++;
@@ -45,7 +45,7 @@ namespace XUnitTestProject1
     {
         static int tryTimes = 0;
 
-        [RetryFact]
+        [Retry]
         public void TryDefaultTimes()
         {
             tryTimes++;

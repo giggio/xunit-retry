@@ -26,7 +26,7 @@ namespace XunitRetry.Generator.SpecflowPlugin
             var count = !generationContext.CustomData.ContainsKey("featureRetryCount") ? 1 : Convert.ToInt32(generationContext.CustomData["featureRetryCount"]);
 
             if (count > 1)
-                CodeDomHelper.AddAttribute(testMethod, "Xunit.RetryFactAttribute", new CodeAttributeArgument(new CodePrimitiveExpression(count)));
+                CodeDomHelper.AddAttribute(testMethod, "Xunit.RetryAttribute", new CodeAttributeArgument(new CodePrimitiveExpression(count)));
             else
                 CodeDomHelper.AddAttribute(testMethod, FACT_ATTRIBUTE);
         }
@@ -35,11 +35,11 @@ namespace XunitRetry.Generator.SpecflowPlugin
             base.SetTestMethodCategories(generationContext, testMethod, scenarioCategories);
             var count = GetRetryCount(scenarioCategories);
             if (count <= 1) return;
-            var existingAttribute = testMethod.CustomAttributes.OfType<CodeAttributeDeclaration>().SingleOrDefault(s => s.Name == "Xunit.RetryFactAttribute");
+            var existingAttribute = testMethod.CustomAttributes.OfType<CodeAttributeDeclaration>().SingleOrDefault(s => s.Name == "Xunit.RetryAttribute");
             if (existingAttribute != null) testMethod.CustomAttributes.Remove(existingAttribute);
             existingAttribute = testMethod.CustomAttributes.OfType<CodeAttributeDeclaration>().SingleOrDefault(s => s.Name == "Xunit.FactAttribute");
             if (existingAttribute != null) testMethod.CustomAttributes.Remove(existingAttribute);
-            CodeDomHelper.AddAttribute(testMethod, "Xunit.RetryFactAttribute", new CodeAttributeArgument(new CodePrimitiveExpression(count)));
+            CodeDomHelper.AddAttribute(testMethod, "Xunit.RetryAttribute", new CodeAttributeArgument(new CodePrimitiveExpression(count)));
         }
         private int GetRetryCount(IEnumerable<string> tags)
         {

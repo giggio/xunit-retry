@@ -7,9 +7,9 @@ namespace Xunit
     /// Works just like [Fact] except that failures are retried (by default, 3 times).
     /// </summary>
     [XunitTestCaseDiscoverer("Xunit.RetryFactDiscoverer", "XunitRetry")]
-    public class RetryFactAttribute : FactAttribute
+    public class RetryAttribute : FactAttribute
     { 
-        public RetryFactAttribute(int maxRetries = 3)
+        public RetryAttribute(int maxRetries = 3)
         {
             MaxRetries = maxRetries;
         }

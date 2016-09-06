@@ -77,7 +77,7 @@ namespace Test
         
         [Xunit.TraitAttribute("FeatureTitle", "A feature with retries")]
         [Xunit.TraitAttribute("Description", "Try do something a few times with another tag")]
-        [Xunit.RetryFactAttribute(8)]
+        [Xunit.RetryAttribute(8)]
         [Xunit.TraitAttribute("Category", "scenariotag")]
         public virtual void TryDoSomethingAFewTimesWithAnotherTag()
         {
@@ -95,7 +95,7 @@ this.ScenarioSetup(scenarioInfo);
         [Xunit.TraitAttribute("Description", "Try do something a few times with another retry inside scenario")]
         [Xunit.TraitAttribute("Category", "scenariotag")]
         [Xunit.TraitAttribute("Category", "retry(12)")]
-        [Xunit.RetryFactAttribute(12)]
+        [Xunit.RetryAttribute(12)]
         public virtual void TryDoSomethingAFewTimesWithAnotherRetryInsideScenario()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Try do something a few times with another retry inside scenario", new string[] {
@@ -111,7 +111,7 @@ this.ScenarioSetup(scenarioInfo);
         
         [Xunit.TraitAttribute("FeatureTitle", "A feature with retries")]
         [Xunit.TraitAttribute("Description", "Try do something a few times with retry from feature")]
-        [Xunit.RetryFactAttribute(8)]
+        [Xunit.RetryAttribute(8)]
         public virtual void TryDoSomethingAFewTimesWithRetryFromFeature()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Try do something a few times with retry from feature", ((string[])(null)));

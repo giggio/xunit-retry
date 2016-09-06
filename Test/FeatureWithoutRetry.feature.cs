@@ -77,7 +77,7 @@ namespace Test
         [Xunit.TraitAttribute("Description", "Try do something a few times")]
         [Xunit.TraitAttribute("Category", "scenariotag")]
         [Xunit.TraitAttribute("Category", "retry(7)")]
-        [Xunit.RetryFactAttribute(7)]
+        [Xunit.RetryAttribute(7)]
         public virtual void TryDoSomethingAFewTimes()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Try do something a few times", new string[] {
@@ -94,7 +94,7 @@ this.ScenarioSetup(scenarioInfo);
         [Xunit.TraitAttribute("FeatureTitle", "A feature without retries")]
         [Xunit.TraitAttribute("Description", "Try do something with default times")]
         [Xunit.TraitAttribute("Category", "retry")]
-        [Xunit.RetryFactAttribute(3)]
+        [Xunit.RetryAttribute(3)]
         public virtual void TryDoSomethingWithDefaultTimes()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Try do something with default times", new string[] {
