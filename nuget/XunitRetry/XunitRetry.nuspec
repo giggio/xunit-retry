@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <metadata>
         <id>XunitRetry</id>
-        <version>1.0.1</version>
+        <version>2.0.0</version>
         <title>Xunit Retry</title>
         <authors>giggio</authors>
         <owners>giggio</owners>
@@ -14,7 +14,7 @@
         <language>en-US</language>
         <tags>xunit</tags>
         <dependencies>
-            <dependency id="xunit" version="1.9.2" />
+            <dependency id="xunit" version="2.1.0" />
         </dependencies>
     </metadata>
     <files>
