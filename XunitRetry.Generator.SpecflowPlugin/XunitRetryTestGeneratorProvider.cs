@@ -36,10 +36,30 @@ namespace XunitRetry.Generator.SpecflowPlugin
             var count = GetRetryCount(scenarioCategories);
             if (count <= 1) return;
             var existingAttribute = testMethod.CustomAttributes.OfType<CodeAttributeDeclaration>().SingleOrDefault(s => s.Name == "Xunit.RetryAttribute");
-            if (existingAttribute != null) testMethod.CustomAttributes.Remove(existingAttribute);
-            existingAttribute = testMethod.CustomAttributes.OfType<CodeAttributeDeclaration>().SingleOrDefault(s => s.Name == "Xunit.FactAttribute");
-            if (existingAttribute != null) testMethod.CustomAttributes.Remove(existingAttribute);
-            CodeDomHelper.AddAttribute(testMethod, "Xunit.RetryAttribute", new CodeAttributeArgument(new CodePrimitiveExpression(count)));
+            if (existingAttribute != null)
+                testMethod.CustomAttributes.Remove(existingAttribute);
+            else
+            {
+                existingAttribute = testMethod.CustomAttributes.OfType<CodeAttributeDeclaration>().SingleOrDefault(s => s.Name == "Xunit.FactAttribute");
+                if (existingAttribute != null)
+                    testMethod.CustomAttributes.Remove(existingAttribute);
+                else
+                {
+                    existingAttribute = testMethod.CustomAttributes.OfType<CodeAttributeDeclaration>().SingleOrDefault(s => s.Name == "Xunit.TheoryAttribute");
+                    if (existingAttribute != null)
+                        testMethod.CustomAttributes.Remove(existingAttribute);
+                }
+            }
+            
+            var newAttribute = CodeDomHelper.AddAttribute(testMethod, "Xunit.RetryAttribute", new CodeAttributeArgument(new CodePrimitiveExpression(count)));
+
+            if (existingAttribute != null)
+            {
+                foreach (var attributeArgument in existingAttribute.Arguments)
+                {
+                    newAttribute.Arguments.Add(attributeArgument as CodeAttributeArgument);
+                }
+            }
         }
         private int GetRetryCount(IEnumerable<string> tags)
         {

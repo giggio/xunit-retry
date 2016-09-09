@@ -74,6 +74,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>FeatureWithDefaultRetry.feature</DependentUpon>
     </Compile>
+    <Compile Include="FeatureWithIgnoredScenarios.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FeatureWithIgnoredScenarios.feature</DependentUpon>
+    </Compile>
     <Compile Include="FeatureWithoutRetry.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -95,6 +100,10 @@
     <None Include="FeatureWithDefaultRetry.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>FeatureWithDefaultRetry.feature.cs</LastGenOutput>
+    </None>
+    <None Include="FeatureWithIgnoredScenarios.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>FeatureWithIgnoredScenarios.feature.cs</LastGenOutput>
     </None>
     <None Include="FeatureWithRetry.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>

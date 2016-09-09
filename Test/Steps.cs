@@ -36,6 +36,12 @@ namespace XUnitTestProject1
         {
             Assert.True(true);
         }
-        
+
+        [Given(@"I will fail")]
+        public void GivenIWillFail()
+        {
+            Assert.False(true);
+        }
+
     }
 }
