@@ -17,16 +17,15 @@ namespace Test
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "2.1.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [Xunit.TraitAttribute("Category", "featuretag")]
-    public partial class AFeatureWithoutRetriesFeature : Xunit.IClassFixture<AFeatureWithoutRetriesFeature.FixtureData>, System.IDisposable
+    public partial class FeatureWithIgnoredScenariosFeature : Xunit.IClassFixture<FeatureWithIgnoredScenariosFeature.FixtureData>, System.IDisposable
     {
         
         private static TechTalk.SpecFlow.ITestRunner testRunner;
         
-#line 1 "FeatureWithoutRetry.feature"
+#line 1 "FeatureWithIgnoredScenarios.feature"
 #line hidden
         
-        public AFeatureWithoutRetriesFeature()
+        public FeatureWithIgnoredScenariosFeature()
         {
             this.TestInitialize();
         }
@@ -34,8 +33,7 @@ namespace Test
         public static void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "A feature without retries", null, ProgrammingLanguage.CSharp, new string[] {
-                        "featuretag"});
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "FeatureWithIgnoredScenarios", "\tA feature with some ignored scenarios", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -64,7 +62,7 @@ namespace Test
             testRunner.CollectScenarioErrors();
         }
         
-        public virtual void SetFixture(AFeatureWithoutRetriesFeature.FixtureData fixtureData)
+        public virtual void SetFixture(FeatureWithIgnoredScenariosFeature.FixtureData fixtureData)
         {
         }
         
@@ -73,50 +71,34 @@ namespace Test
             this.ScenarioTearDown();
         }
         
-        [Xunit.TraitAttribute("FeatureTitle", "A feature without retries")]
-        [Xunit.TraitAttribute("Description", "Try do something a few times")]
-        [Xunit.TraitAttribute("Category", "scenariotag")]
-        [Xunit.TraitAttribute("Category", "retry(7)")]
-        [Xunit.RetryAttribute(7)]
-        public virtual void TryDoSomethingAFewTimes()
+        [Xunit.TraitAttribute("FeatureTitle", "FeatureWithIgnoredScenarios")]
+        [Xunit.TraitAttribute("Description", "Some ignored scenario")]
+        [Xunit.FactAttribute(Skip="Ignored")]
+        public virtual void SomeIgnoredScenario()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Try do something a few times", new string[] {
-                        "scenariotag",
-                        "retry(7)"});
-#line 6
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Some ignored scenario", new string[] {
+                        "ignore"});
+#line 5
 this.ScenarioSetup(scenarioInfo);
-#line 7
- testRunner.When("I try something", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 6
+ testRunner.Given("I will fail", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
             this.ScenarioCleanup();
         }
         
-        [Xunit.TraitAttribute("FeatureTitle", "A feature without retries")]
-        [Xunit.TraitAttribute("Description", "Try do something with default times")]
+        [Xunit.TraitAttribute("FeatureTitle", "FeatureWithIgnoredScenarios")]
+        [Xunit.TraitAttribute("Description", "Some ignored scenario with retries")]
         [Xunit.TraitAttribute("Category", "retry")]
-        [Xunit.RetryAttribute(3)]
-        public virtual void TryDoSomethingWithDefaultTimes()
+        [Xunit.RetryAttribute(3, Skip="Ignored")]
+        public virtual void SomeIgnoredScenarioWithRetries()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Try do something with default times", new string[] {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Some ignored scenario with retries", new string[] {
+                        "ignore",
                         "retry"});
 #line 10
 this.ScenarioSetup(scenarioInfo);
 #line 11
- testRunner.When("I try something 3 times", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [Xunit.TraitAttribute("FeatureTitle", "A feature without retries")]
-        [Xunit.TraitAttribute("Description", "This will try only once")]
-        [Xunit.FactAttribute()]
-        public virtual void ThisWillTryOnlyOnce()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("This will try only once", ((string[])(null)));
-#line 13
-this.ScenarioSetup(scenarioInfo);
-#line 14
- testRunner.When("I do something", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.Given("I will fail", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -128,12 +110,12 @@ this.ScenarioSetup(scenarioInfo);
             
             public FixtureData()
             {
-                AFeatureWithoutRetriesFeature.FeatureSetup();
+                FeatureWithIgnoredScenariosFeature.FeatureSetup();
             }
             
             void System.IDisposable.Dispose()
             {
-                AFeatureWithoutRetriesFeature.FeatureTearDown();
+                FeatureWithIgnoredScenariosFeature.FeatureTearDown();
             }
         }
     }

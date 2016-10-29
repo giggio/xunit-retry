@@ -12,24 +12,36 @@ namespace XUnitTestProject1
         {
             tryTimes++;
             Console.WriteLine("Tried " + tryTimes);
-            Assert.True(tryTimes == 5);
+            Assert.Equal(5, tryTimes);
+
+            // Reset the try counter only when the test passes
+            if (tryTimes == 5)
+                tryTimes = 0;
+            
         }
         [When]
         public void WhenITrySomething_P0_times(int n)
         {
             tryTimes++;
             Console.WriteLine("Tried " + tryTimes);
-            Assert.True(tryTimes == n);
+            Assert.Equal(n, tryTimes);
+
+            // Reset the try counter only when the test passes
+            if (tryTimes == n)
+                tryTimes = 0;
         }
+
         [When]
         public void WhenIDoSomething()
         {
             Assert.True(true);
         }
-        [AfterScenario]
-        public void AfterScenario()
+
+        [Given(@"I will fail")]
+        public void GivenIWillFail()
         {
-            tryTimes = 0;
+            Assert.False(true);
         }
+
     }
 }

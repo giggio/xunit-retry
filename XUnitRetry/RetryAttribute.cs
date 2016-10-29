@@ -1,20 +1,23 @@
-﻿using System.Collections.Generic;
+﻿using Xunit;
 using Xunit.Sdk;
+
 namespace Xunit
 {
+    /// <summary>
+    /// Works just like [Fact] except that failures are retried (by default, 3 times).
+    /// </summary>
+    [XunitTestCaseDiscoverer("Xunit.RetryFactDiscoverer", "XunitRetry")]
     public class RetryAttribute : FactAttribute
-    {
-        readonly int times;
-
-        public RetryAttribute(int times = 3)
+    { 
+        public RetryAttribute(int maxRetries = 3)
         {
-            this.times = times;
+            MaxRetries = maxRetries;
         }
 
-        protected override IEnumerable<ITestCommand> EnumerateTestCommands(IMethodInfo method)
-        {
-            yield return new RetryCommand(method, times);
-            yield break;
-        }
+        /// <summary>
+        /// Number of retries allowed for a failed test. If unset (or set less than 1), will
+        /// default to 3 attempts.
+        /// </summary>
+        public int MaxRetries { get; set; }
     }
 }

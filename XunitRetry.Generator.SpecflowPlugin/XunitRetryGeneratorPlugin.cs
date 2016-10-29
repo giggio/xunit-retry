@@ -3,6 +3,7 @@ using BoDi;
 using TechTalk.SpecFlow.Generator.Configuration;
 using TechTalk.SpecFlow.Generator.Plugins;
 using TechTalk.SpecFlow.Generator.UnitTestProvider;
+using System;
 
 [assembly: GeneratorPlugin(typeof(XunitRetry.Generator.SpecflowPlugin.XunitRetryGeneratorPlugin))]
 
@@ -18,5 +19,15 @@ namespace XunitRetry.Generator.SpecflowPlugin
         }
 
         public void RegisterConfigurationDefaults(SpecFlowProjectConfiguration specFlowConfiguration) { }
+
+        public void Initialize(GeneratorPluginEvents generatorPluginEvents, GeneratorPluginParameters generatorPluginParameters)
+        {
+            generatorPluginEvents.CustomizeDependencies += GeneratorPluginEvents_CustomizeDependencies;
+        }
+
+        private void GeneratorPluginEvents_CustomizeDependencies(object sender, CustomizeDependenciesEventArgs e)
+        {
+            e.ObjectContainer.RegisterTypeAs<XunitRetryTestGeneratorProvider, IUnitTestGeneratorProvider>();
+        }
     }
 }
