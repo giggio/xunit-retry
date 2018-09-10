@@ -1,5 +1,9 @@
 ﻿# Xunit Retry
 
+
+[![NuGet](https://img.shields.io/nuget/v/XunitRetry.svg)](https://www.nuget.org/packages/XunitRetry/)
+
+
 This is the repo for xUnit Retry project. It holds both xUnitRetry and it's SpecFlow plugin.
 
 ## Documentation
