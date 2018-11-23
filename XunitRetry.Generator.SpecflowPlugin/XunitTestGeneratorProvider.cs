@@ -237,5 +237,10 @@ namespace XunitRetry.Generator.SpecflowPlugin
         {
             // doing nothing since we support RowTest
         }
+
+        public void SetTestClassParallelize(TestClassGenerationContext generationContext)
+        {
+            //doing nothing
+        }
     }
 }
