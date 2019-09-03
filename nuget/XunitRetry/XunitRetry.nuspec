@@ -18,6 +18,6 @@
         </dependencies>
     </metadata>
     <files>
-        <file src="..\..\XUnitRetry\bin\Release\XunitRetry.dll" target="lib\net451\XunitRetry.dll" />
+        <file src="..\..\XUnitRetry\bin\Release\netstandard2.0\XunitRetry.dll" target="lib\netstandard2.0\XunitRetry.dll" />
     </files>
 </package>
