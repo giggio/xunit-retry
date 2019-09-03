@@ -21,6 +21,6 @@
     <files>
         <file src="App.config.install.xdt" target="content\App.config.install.xdt" />
         <file src="App.config.uninstall.xdt" target="content\App.config.uninstall.xdt" />
-        <file src="..\..\XunitRetry.Generator.SpecflowPlugin\bin\Release\XunitRetry.Generator.SpecflowPlugin.dll" target="tools\XunitRetry.Generator.SpecflowPlugin.dll" />
+        <file src="..\..\XunitRetry.Generator.SpecflowPlugin\bin\Release\netstandard2.0\XunitRetry.Generator.SpecflowPlugin.dll" target="tools\XunitRetry.Generator.SpecflowPlugin.dll" />
     </files>
 </package>
